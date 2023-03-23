@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<!--use users7997;
+
+create table cities
+(
+    id int primary key auto_increment not null ,
+    city varchar(20) not null
+);
+
+create table users
+(
+    id int primary key auto_increment not null ,
+    name varchar(20) not null ,
+    age int not null ,
+    city_id int null ,
+    foreign key (city_id) references cities(id)
+);
+
+select users.name , c.* from users
+join cities c on c.id = users.city_id
+where city = 'Lviv';
+
+
+select * from users
+join cities c on c.id = users.city_id;
+
+select *
+from users left join cities c on c.id = users.city_id;
+
+select *
+from users right join cities c on c.id = users.city_id;
+
+
+select * from users where age in (select age from users join cities c on c.id = users.city_id where city = 'Lviv')-->
+</body>
+</html>
