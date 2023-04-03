@@ -168,6 +168,49 @@ db.users.find({name:/a$/i})
 db.users.find({name:/^.{2}t/i})
 <!--Починається на а та закінчується на k-->
 db.users.find({name:/^k.*a$/i})
+<!--Просто щоб була літера v-->
+db.users.find({name:/.*v.*/i})
+
+
+
+<!--Сортировка *по рейтингк з меньшого, та з більшого-->
+db.users.find().sort({rating:1})
+db.users.find().sort({rating:-1})
+<!--сортуівння по рейтінгу та імені-->
+db.users.find().sort({rating:-1, name: -1})
+<!--Пошук та відображення по 2-->
+db.users.find().sort({rating:-1, name: -1}).limit(2)
+db.users.find().sort({rating:-1, name: -1}).limit(2).skip(2)
+db.users.find().sort({rating:-1, name: -1}).limit(2).skip(4)
+db.users.find().sort({rating:-1, name: -1}).limit(2).skip(6)
+db.users.find().sort({rating:-1, name: -1}).limit(2).skip(8)
+
+<!--Більше-->
+db.users.find({rating:{$gt:2}})
+<!--Меньше-->
+db.users.find({rating:{$lt:3}})
+<!--Більше або =-->
+db.users.find({rating:{$gte:2}})
+<!--Меньше або =-->
+db.users.find({rating:{$lte:3}})
+<!--не дорівнює-->
+db.users.find({rating:{$ne:3}})
+<!--дорівнює-->
+db.users.find({rating:{$eq:3}})
+db.users.find({rating:3})
+
+<!--Замінити/ оновити щось (першого)-->
+db.users.updateOne(
+{gender:'male'},
+{$set:{gender:'animal'}}
+)
+<!--Замінити/ оновити щось (всіх)-->
+db.users.updateMany(
+{gender:'male'},
+{$set:{gender:'animal'}}
+)
+
+
 
 </body>
 </html>
