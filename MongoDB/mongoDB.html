@@ -122,7 +122,7 @@ db.users.insertOne({car: 'BMW', model: 's3'})
 db.users.find({gender: 'female'})
 db.users.find({gender: 'female', age:29})
 db.users.find({_id: ObjectId('642834e6014f1929f1d87dba')})
-<!--Пошук без якогось елемента-->
+<!--Пошук без якогось елемента: 0 або false-->
 db.users.find({gender: 'female', age:29},
 {_id:0}
 )
