@@ -129,5 +129,15 @@ db.users.find({gender: 'female', age:29},
 
 
 
+<!--Або:-->
+db.users.find({
+$or:[
+{rating:2},
+{rating:5},
+{age:12}
+]
+})
+
+
 </body>
 </html>
