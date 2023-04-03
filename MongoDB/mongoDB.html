@@ -236,13 +236,17 @@ db.users.updateOne(
 {$push:{studying: 'python'}}
 )
 
-<!--Видалити-->
+<!--Видалити якусь інфу-->
 db.users.updateOne(
 {_id:ObjectId("642834e6014f1929f1d87dba")},
 {$pull:{studying: 'java'}}
 )
 
 
+<!--Видалити об’ект-->
+db.users.deleteOne({_id:ObjectId("642843df2db9e852e02aa411")})
+
+<!--Alt+0146 = ’-->
 
 
 </body>
