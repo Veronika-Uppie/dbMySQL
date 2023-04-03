@@ -210,6 +210,39 @@ db.users.updateMany(
 {$set:{gender:'animal'}}
 )
 
+<!--пошук по кількості елементів-->
+db.users.find({studying:{$size:2}})
+
+<!--Чи взагвлі є-->
+db.users.find({parents:{$exists:0}})
+
+
+<!--Замінити-->
+db.users.updateMany(
+{parents:{$exists:1}},
+{$set:{'parents.$[]':'Hi'}}
+)
+
+<!---->
+db.users.find({studying:'js'})
+<!--Вкладенність. знайти всіх, що проживають у Лювові-->
+db.users.find({'address.city':'Lviv'})
+<!--Другий елемент java-->
+db.users.find({'studying.1':'java'})
+
+<!--Додати в массив-->
+db.users.updateOne(
+{_id:ObjectId("642834e6014f1929f1d87dba")},
+{$push:{studying: 'python'}}
+)
+
+<!--Видалити-->
+db.users.updateOne(
+{_id:ObjectId("642834e6014f1929f1d87dba")},
+{$pull:{studying: 'java'}}
+)
+
+
 
 
 </body>
