@@ -435,8 +435,54 @@ $match:{
 }
 ])
 
-<!---->
+<!--Пошук вчителів,в яких є хочаб 1 з батьків має професію доктор-->
+db.teacher.aggregate([
+{
+$lookup:{
+from:'students',
+localField:'class_curator',
+foreignField:'class',
+as:'myStudents'
+}
+},
+{
+$sort:{
+class_curator:1
+}
+},
+{
+$match:{
+'myStudents.parents.profession':'doctor'
+}
+}
+])
 
+
+<!--кількість докторів-->
+db.teacher.aggregate([
+{
+$lookup:{
+from:'students',
+localField:'class_curator',
+foreignField:'class',
+as:'myStudents'
+}
+},
+{
+$unwind:'$myStudents'
+},
+{
+$unwind:'$myStudents.parents'
+},
+{
+$match:{
+'myStudents.parents.profession': 'doctor'
+}
+},
+{
+$count:'DoctorCount'
+}
+])
 
 
 
